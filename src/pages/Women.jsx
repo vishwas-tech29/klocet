@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useProducts } from '../context/ProductContext';
-import ProductCard from '../components/ProductCard';
+import { ProductCard } from '../components/ProductCard';
 import './Women.css';
 
 const Women = () => {
