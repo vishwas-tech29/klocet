@@ -1,0 +1,244 @@
+.about-page {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.about-hero {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  padding: 100px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.about-hero h1 {
+  font-family: var(--font-display);
+  font-size: 64px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.about-hero p {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.story-section {
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+.story-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.story-content h2 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.story-content p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 2;
+  color: var(--text);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.values-section {
+  padding: 80px 0;
+  background: var(--surface);
+}
+
+.values-section h2 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.value-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 40px;
+}
+
+.value-card h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.value-card p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.mission-vision-section {
+  padding: 80px 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.mission-block,
+.vision-block {
+  padding: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.mission-block h3,
+.vision-block h3 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.mission-block p,
+.vision-block p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.team-section {
+  padding: 80px 0;
+  background: var(--surface);
+  text-align: center;
+}
+
+.team-section h2 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.team-intro {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.contact-cta {
+  padding: 80px 0;
+  background: var(--bg);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.contact-cta h2 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.contact-cta p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  padding: 12px 24px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 200ms ease;
+  display: inline-block;
+}
+
+.social-btn:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 40px;
+  }
+
+  .about-hero p {
+    font-size: 13px;
+  }
+
+  .story-content h2,
+  .values-section h2,
+  .mission-vision-section h2,
+  .contact-cta h2 {
+    font-size: 32px;
+  }
+
+  .story-section,
+  .values-section,
+  .mission-vision-section,
+  .team-section,
+  .contact-cta {
+    padding: 50px 0;
+  }
+
+  .value-card,
+  .mission-block,
+  .vision-block {
+    padding: 30px 20px;
+  }
+
+  .social-links {
+    gap: 10px;
+  }
+
+  .social-btn {
+    padding: 10px 16px;
+    font-size: 11px;
+  }
+}

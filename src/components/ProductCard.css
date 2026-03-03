@@ -1,0 +1,234 @@
+.product-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.1);
+}
+
+.product-image-container {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--surface2);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--surface2) 0%, var(--border) 100%);
+}
+
+.product-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
+.badge-sale {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.badge-new {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.badge-limited {
+  background: transparent;
+  color: var(--accent2);
+  border-color: var(--accent2);
+}
+
+.product-info {
+  padding: 16px;
+  padding-bottom: 50px;
+}
+
+.product-name {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.product-name a {
+  color: var(--text);
+}
+
+.product-name a:hover {
+  color: var(--accent);
+}
+
+.product-price {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.original-price {
+  color: var(--muted);
+  text-decoration: line-through;
+  font-size: 12px;
+}
+
+.current-price {
+  color: var(--accent);
+}
+
+.add-to-cart-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.add-to-cart-btn:hover {
+  background: var(--text);
+  color: var(--bg);
+  transform: none;
+}
+
+/* Size Select Modal */
+.size-select-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.size-select-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  animation: scaleIn 300ms ease;
+}
+
+.size-select-content h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.sizes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.size-button {
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.size-button:hover {
+  border-color: var(--accent);
+}
+
+.size-button.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.size-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 12px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: transparent;
+  transform: none;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--text);
+  transform: none;
+}
