@@ -56,7 +56,7 @@ export const Navbar = () => {
           </div>
 
           {/* Center: Logo */}
-          <Link to="/" className="nav-logo">NEVERMIND</Link>
+          <Link to="/" className="nav-logo">KLOSET</Link>
 
           {/* Right: Search & Cart */}
           <div className="nav-right">

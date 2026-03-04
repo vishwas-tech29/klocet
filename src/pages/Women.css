@@ -81,6 +81,81 @@
   letter-spacing: 1px;
 }
 
+/* Collection Sections */
+.collections-sections {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.collection-section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-title h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--text);
+  letter-spacing: 2px;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.section-title p {
+  font-family: var(--font-body);
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.section-meta {
+  text-align: right;
+}
+
+.product-count {
+  display: inline-block;
+  background-color: var(--surface);
+  color: var(--accent2);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.section-empty {
+  padding: 40px;
+  text-align: center;
+  background-color: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.section-empty p {
+  margin: 0;
+  font-size: 1rem;
+}
+
 .women-grid {
   max-width: 1400px;
   margin: 0 auto;
@@ -110,6 +185,7 @@
     font-size: 2.2rem;
   }
 
+  .collection-grid,
   .women-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
@@ -119,6 +195,16 @@
     flex-direction: column;
     gap: 20px;
     align-items: flex-start;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-meta {
+    text-align: left;
+    margin-top: 12px;
   }
 }
 
@@ -141,6 +227,7 @@
     font-size: 0.95rem;
   }
 
+  .collection-grid,
   .women-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -150,5 +237,29 @@
   .women-controls {
     padding: 0 10px;
     margin-bottom: 20px;
+  }
+
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .collections-sections {
+    gap: 40px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-grid,
+  .women-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .women-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .section-title h2 {
+    font-size: 1.2rem;
   }
 }

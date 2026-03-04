@@ -64,7 +64,7 @@ export const AdminDashboard = () => {
     <div className="admin-dashboard">
       {/* Sidebar */}
       <aside className="admin-sidebar">
-        <div className="sidebar-logo">NEVERMIND</div>
+        <div className="sidebar-logo">KLOSET</div>
 
         <nav className="sidebar-nav">
           <Link to="/admin/dashboard" className="nav-item active">
@@ -75,6 +75,9 @@ export const AdminDashboard = () => {
           </Link>
           <Link to="/admin/products/add" className="nav-item">
             ➕ Add Product
+          </Link>
+          <Link to="/admin/sections" className="nav-item">
+            📂 Sections
           </Link>
           <Link to="/admin/orders" className="nav-item">
             📋 Orders

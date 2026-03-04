@@ -26,6 +26,7 @@ import { AdminAddProduct } from './pages/admin/AdminAddProduct';
 import { AdminEditProduct } from './pages/admin/AdminEditProduct';
 import { AdminOrders } from './pages/admin/AdminOrders';
 import { AdminHero } from './pages/admin/AdminHero';
+import { AdminSections } from './pages/admin/AdminSections';
 
 function App() {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
@@ -66,6 +67,11 @@ function App() {
               <Route path="/admin/hero" element={
                 <ProtectedRoute>
                   <AdminHero />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/sections" element={
+                <ProtectedRoute>
+                  <AdminSections />
                 </ProtectedRoute>
               } />
 

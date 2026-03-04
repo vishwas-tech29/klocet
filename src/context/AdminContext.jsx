@@ -14,9 +14,23 @@ const DEFAULT_HERO = {
   visionImage: ''
 };
 
+const DEFAULT_SECTIONS = {
+  men: [
+    { id: 'men-1', title: 'New Arrivals', description: 'Latest men collection', order: 1, active: true },
+    { id: 'men-2', title: 'Best Sellers', description: 'Most popular items', order: 2, active: true },
+    { id: 'men-3', title: 'On Sale', description: 'Discounted products', order: 3, active: true }
+  ],
+  women: [
+    { id: 'women-1', title: 'New Arrivals', description: 'Latest women collection', order: 1, active: true },
+    { id: 'women-2', title: 'Best Sellers', description: 'Most popular items', order: 2, active: true },
+    { id: 'women-3', title: 'On Sale', description: 'Discounted products', order: 3, active: true }
+  ]
+};
+
 export const AdminProvider = ({ children }) => {
   const [adminAuth, setAdminAuth] = useState(false);
   const [heroContent, setHeroContent] = useState(DEFAULT_HERO);
+  const [sections, setSections] = useState(DEFAULT_SECTIONS);
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -31,6 +45,15 @@ export const AdminProvider = ({ children }) => {
         setHeroContent(JSON.parse(savedHero));
       } catch (e) {
         console.error('Error loading hero:', e);
+      }
+    }
+
+    const savedSections = localStorage.getItem('nevermind_sections');
+    if (savedSections) {
+      try {
+        setSections(JSON.parse(savedSections));
+      } catch (e) {
+        console.error('Error loading sections:', e);
       }
     }
   }, []);
@@ -56,13 +79,67 @@ export const AdminProvider = ({ children }) => {
     localStorage.setItem('nevermind_hero', JSON.stringify(updated));
   };
 
+  const addSection = (category, section) => {
+    const newSection = {
+      id: Date.now().toString(),
+      ...section,
+      active: true
+    };
+    const updatedSections = {
+      ...sections,
+      [category]: [...sections[category], newSection]
+    };
+    setSections(updatedSections);
+    localStorage.setItem('nevermind_sections', JSON.stringify(updatedSections));
+    return newSection;
+  };
+
+  const updateSection = (category, sectionId, data) => {
+    const updatedSections = {
+      ...sections,
+      [category]: sections[category].map(s =>
+        s.id === sectionId ? { ...s, ...data } : s
+      )
+    };
+    setSections(updatedSections);
+    localStorage.setItem('nevermind_sections', JSON.stringify(updatedSections));
+  };
+
+  const deleteSection = (category, sectionId) => {
+    const updatedSections = {
+      ...sections,
+      [category]: sections[category].filter(s => s.id !== sectionId)
+    };
+    setSections(updatedSections);
+    localStorage.setItem('nevermind_sections', JSON.stringify(updatedSections));
+  };
+
+  const reorderSections = (category, newOrder) => {
+    const updatedSections = {
+      ...sections,
+      [category]: newOrder
+    };
+    setSections(updatedSections);
+    localStorage.setItem('nevermind_sections', JSON.stringify(updatedSections));
+  };
+
+  const getSectionsByCategory = (category) => {
+    return sections[category] || [];
+  };
+
   return (
     <AdminContext.Provider value={{
       adminAuth,
       login,
       logout,
       heroContent,
-      updateHero
+      updateHero,
+      sections,
+      addSection,
+      updateSection,
+      deleteSection,
+      reorderSections,
+      getSectionsByCategory
     }}>
       {children}
     </AdminContext.Provider>
