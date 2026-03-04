@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import { useCart } from '../context/CartContext';
+import { PaymentForm } from '../components/PaymentForm';
+import { STRIPE_CONFIG } from '../config/stripe';
 import './Checkout.css';
+
+const stripePromise = loadStripe(STRIPE_CONFIG.publishableKey);
 
 export const Checkout = () => {
   const navigate = useNavigate();
@@ -38,29 +44,11 @@ export const Checkout = () => {
       return;
     }
 
-    // If not at payment step, move to payment
-    if (!paymentStep) {
-      setPaymentStep(true);
-      return;
-    }
+    // Move to payment step
+    setPaymentStep(true);
+  };
 
-    // Validate payment info
-    if (!formData.cardNumber || !formData.cardExpiry || !formData.cardCvc || !formData.cardName) {
-      alert('Please fill in all payment fields');
-      return;
-    }
-
-    // Simple card validation
-    if (formData.cardNumber.length < 13) {
-      alert('Invalid card number');
-      return;
-    }
-
-    if (formData.cardCvc.length < 3) {
-      alert('Invalid CVC');
-      return;
-    }
-
+  const handlePaymentSuccess = (paymentDetails) => {
     // Create order
     const order = {
       id: `ORD-${Date.now()}`,
@@ -78,7 +66,8 @@ export const Checkout = () => {
       date: new Date().toISOString(),
       status: 'Pending',
       paymentMethod: 'Card',
-      cardLast4: formData.cardNumber.slice(-4)
+      cardLast4: paymentDetails.cardLast4,
+      cardBrand: paymentDetails.cardBrand
     };
 
     // Save to localStorage
@@ -205,74 +194,14 @@ export const Checkout = () => {
                 </button>
               </>
             ) : (
-              <>
-                <fieldset>
-                  <legend>PAYMENT INFORMATION</legend>
-
-                  <input
-                    type="text"
-                    name="cardName"
-                    placeholder="Cardholder Name"
-                    value={formData.cardName}
-                    onChange={handleChange}
-                    required
-                  />
-
-                  <input
-                    type="text"
-                    name="cardNumber"
-                    placeholder="Card Number (13+ digits)"
-                    value={formData.cardNumber}
-                    onChange={(e) => {
-                      const value = e.target.value.replace(/\s/g, '');
-                      if (/^\d*$/.test(value)) {
-                        setFormData(prev => ({ ...prev, cardNumber: value }));
-                      }
-                    }}
-                    maxLength="19"
-                    required
-                  />
-
-                  <div className="form-row">
-                    <input
-                      type="text"
-                      name="cardExpiry"
-                      placeholder="MM/YY"
-                      value={formData.cardExpiry}
-                      onChange={(e) => {
-                        let value = e.target.value.replace(/\D/g, '');
-                        if (value.length >= 2) {
-                          value = value.slice(0, 2) + '/' + value.slice(2, 4);
-                        }
-                        setFormData(prev => ({ ...prev, cardExpiry: value }));
-                      }}
-                      maxLength="5"
-                      required
-                    />
-                    <input
-                      type="text"
-                      name="cardCvc"
-                      placeholder="CVC"
-                      value={formData.cardCvc}
-                      onChange={(e) => {
-                        const value = e.target.value.replace(/\D/g, '');
-                        setFormData(prev => ({ ...prev, cardCvc: value }));
-                      }}
-                      maxLength="4"
-                      required
-                    />
-                  </div>
-                </fieldset>
-
-                <div className="payment-actions">
-                  <button type="button" className="back-btn" onClick={() => setPaymentStep(false)}>
-                    BACK TO SHIPPING
-                  </button>
-                  <button type="submit" className="place-order-btn">
-                    COMPLETE PURCHASE ${cartTotal.toFixed(2)}
-                  </button>
-                </div>
-              </>
+              <Elements stripe={stripePromise}>
+                <PaymentForm
+                  amount={cartTotal}
+                  onSuccess={handlePaymentSuccess}
+                  onBack={() => setPaymentStep(false)}
+                  customerInfo={formData}
+                />
+              </Elements>
             )}
           </form>
 

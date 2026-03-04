@@ -67,6 +67,15 @@ const Men = () => {
     return getSortedProducts(menProducts);
   }, [menProducts, sortBy]);
 
+  // Get products by category
+  const sweatshirtProducts = useMemo(() => {
+    return menProducts.filter(p => p.category === 'Sweatshirts');
+  }, [menProducts]);
+
+  const tshirtProducts = useMemo(() => {
+    return menProducts.filter(p => p.category === 'Tees');
+  }, [menProducts]);
+
   return (
     <div className="men-page">
       {/* Hero Section */}
@@ -90,54 +99,78 @@ const Men = () => {
         </div>
       </div>
 
-      {/* Collection Sections */}
-      {sections.length > 0 ? (
-        <div className="collections-sections">
-          {sections.map((section) => {
-            const sectionProducts = getProductsForSection(section.title);
-            return (
-              <section key={section.id} className="collection-section">
-                <div className="section-header">
-                  <div className="section-title">
-                    <h2>{section.title}</h2>
-                    {section.description && <p>{section.description}</p>}
-                  </div>
-                  <div className="section-meta">
-                    <span className="product-count">{sectionProducts.length} items</span>
-                  </div>
-                </div>
-
-                {sectionProducts.length > 0 ? (
-                  <div className="collection-grid">
-                    {sectionProducts.map(product => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="section-empty">
-                    <p>No products in this section yet.</p>
-                  </div>
-                )}
-              </section>
-            );
-          })}
-        </div>
-      ) : (
-        <>
-          {/* Fallback: Display all products in grid if no sections */}
-          {allSortedProducts.length > 0 ? (
-            <div className="men-grid">
-              {allSortedProducts.map(product => (
+      {/* Category Sections */}
+      <div className="collections-sections">
+        {/* Sweatshirts Section */}
+        {sweatshirtProducts.length > 0 && (
+          <section className="collection-section">
+            <div className="section-header">
+              <div className="section-title">
+                <h2>SWEATSHIRTS</h2>
+                <p>Premium sweatshirts for ultimate comfort and style</p>
+              </div>
+              <div className="section-meta">
+                <span className="product-count">{sweatshirtProducts.length} items</span>
+              </div>
+            </div>
+            <div className="collection-grid">
+              {getSortedProducts(sweatshirtProducts).map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
-          ) : (
-            <div className="men-empty">
-              <p>No men's products available yet.</p>
+          </section>
+        )}
+
+        {/* T-Shirts Section */}
+        {tshirtProducts.length > 0 && (
+          <section className="collection-section">
+            <div className="section-header">
+              <div className="section-title">
+                <h2>T-SHIRTS</h2>
+                <p>Essential tees with bold graphics and premium quality</p>
+              </div>
+              <div className="section-meta">
+                <span className="product-count">{tshirtProducts.length} items</span>
+              </div>
             </div>
-          )}
-        </>
-      )}
+            <div className="collection-grid">
+              {getSortedProducts(tshirtProducts).map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Admin Sections */}
+        {sections.length > 0 && sections.map((section) => {
+          const sectionProducts = getProductsForSection(section.title);
+          return (
+            <section key={section.id} className="collection-section">
+              <div className="section-header">
+                <div className="section-title">
+                  <h2>{section.title}</h2>
+                  {section.description && <p>{section.description}</p>}
+                </div>
+                <div className="section-meta">
+                  <span className="product-count">{sectionProducts.length} items</span>
+                </div>
+              </div>
+
+              {sectionProducts.length > 0 ? (
+                <div className="collection-grid">
+                  {sectionProducts.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              ) : (
+                <div className="section-empty">
+                  <p>No products in this section yet.</p>
+                </div>
+              )}
+            </section>
+          );
+        })}
+      </div>
     </div>
   );
 };

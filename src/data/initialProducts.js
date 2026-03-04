@@ -222,5 +222,53 @@ export const initialProducts = [
     images: ["https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=600&fit=crop"],
     description: "Bold black t-shirt with striking Peaky Blinders typography and character design. Premium 100% cotton with high-contrast red text. Limited edition streetwear piece.",
     createdAt: "2024-03-01"
+  },
+  {
+    id: "15",
+    name: "Spider-Man Sweatshirt",
+    category: "Sweatshirts",
+    gender: "Unisex",
+    price: 52,
+    originalPrice: 65,
+    onSale: true,
+    badge: "New",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    stock: 18,
+    featured: true,
+    images: ["https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=600&fit=crop"],
+    description: "Black crew neck sweatshirt featuring Spider-Man Into The Spider-Verse artwork. Premium heavyweight cotton blend with soft brushed interior. Bold graphic print on back.",
+    createdAt: "2024-03-05"
+  },
+  {
+    id: "16",
+    name: "Hustle Rabbit Sweatshirt",
+    category: "Sweatshirts",
+    gender: "Unisex",
+    price: 55,
+    originalPrice: 55,
+    onSale: false,
+    badge: "Limited",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    stock: 12,
+    featured: true,
+    images: ["https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=600&fit=crop"],
+    description: "Black sweatshirt with bold red typography design featuring 'Hustle Rabbit' and 'No Exit Way' graphics. Includes barcode detail and signature styling. Premium cotton construction.",
+    createdAt: "2024-03-05"
+  },
+  {
+    id: "17",
+    name: "Batman Brave Sweatshirt",
+    category: "Sweatshirts",
+    gender: "Men",
+    price: 58,
+    originalPrice: 72,
+    onSale: true,
+    badge: "New",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    stock: 15,
+    featured: true,
+    images: ["https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=600&fit=crop"],
+    description: "Grey crew neck sweatshirt with striking Batman 'Men Are Brave' poster design on back. Features dramatic red and black artwork. Premium heavyweight cotton with ribbed cuffs and hem.",
+    createdAt: "2024-03-05"
   }
 ];
