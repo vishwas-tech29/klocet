@@ -5,6 +5,7 @@ import { useAdmin } from '../context/AdminContext';
 import { ProductCard } from '../components/ProductCard';
 import { Ticker } from '../components/Ticker';
 import { ModelSlider } from '../components/ModelSlider';
+import { ScrollReveal } from '../components/ScrollReveal';
 import './Home.css';
 
 export const Home = () => {
@@ -87,14 +88,18 @@ export const Home = () => {
       {/* Designed to Disrupt Section */}
       <section className="designed-section">
         <div className="container">
-          <h2 className="section-heading">DESIGNED TO DISRUPT</h2>
-          <p className="section-subtext">
-            Pushing boundaries. Challenging norms. Redefining what streetwear means.
-          </p>
+          <ScrollReveal animation="fade-up">
+            <h2 className="section-heading">DESIGNED TO DISRUPT</h2>
+            <p className="section-subtext">
+              Pushing boundaries. Challenging norms. Redefining what streetwear means.
+            </p>
+          </ScrollReveal>
 
           <div className="grid-4">
-            {(featured.length > 0 ? featured : sortedByNewest).map(product => (
-              <ProductCard key={product.id} product={product} />
+            {(featured.length > 0 ? featured : sortedByNewest).map((product, index) => (
+              <ScrollReveal key={product.id} animation="fade-up" delay={index * 100}>
+                <ProductCard product={product} />
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -107,22 +112,26 @@ export const Home = () => {
       <section className="mission-section">
         <div className="container">
           <div className="grid-2">
-            <div className="mission-text">
-              <h2>OUR MISSION</h2>
-              <p>
-                We believe in fashion that speaks louder than words. NEVERMIND is more than a brand—
-                it's a movement for those who refuse to fit into molds. We design pieces that challenge, 
-                inspire, and empower the unconventional.
-              </p>
-              <button className="learn-more-btn">LEARN MORE</button>
-            </div>
-            <div className="mission-image">
-              {heroContent.missionImage ? (
-                <img src={heroContent.missionImage} alt="Mission" />
-              ) : (
-                <div className="placeholder-large"></div>
-              )}
-            </div>
+            <ScrollReveal animation="fade-right">
+              <div className="mission-text">
+                <h2>OUR MISSION</h2>
+                <p>
+                  We believe in fashion that speaks louder than words. NEVERMIND is more than a brand—
+                  it's a movement for those who refuse to fit into molds. We design pieces that challenge, 
+                  inspire, and empower the unconventional.
+                </p>
+                <button className="learn-more-btn">LEARN MORE</button>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-left">
+              <div className="mission-image">
+                {heroContent.missionImage ? (
+                  <img src={heroContent.missionImage} alt="Mission" />
+                ) : (
+                  <div className="placeholder-large"></div>
+                )}
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -131,22 +140,26 @@ export const Home = () => {
       <section className="vision-section">
         <div className="container">
           <div className="grid-2 reversed">
-            <div className="vision-image">
-              {heroContent.visionImage ? (
-                <img src={heroContent.visionImage} alt="Vision" />
-              ) : (
-                <div className="placeholder-large"></div>
-              )}
-            </div>
-            <div className="vision-text">
-              <h2>OUR VISION</h2>
-              <p>
-                To be the beacon for authentic self-expression. We create spaces where individuality 
-                is celebrated, where the bold thrive, and where every piece tells a story of rebellion, 
-                elegance, and purpose.
-              </p>
-              <button className="learn-more-btn">LEARN MORE</button>
-            </div>
+            <ScrollReveal animation="fade-right">
+              <div className="vision-image">
+                {heroContent.visionImage ? (
+                  <img src={heroContent.visionImage} alt="Vision" />
+                ) : (
+                  <div className="placeholder-large"></div>
+                )}
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-left">
+              <div className="vision-text">
+                <h2>OUR VISION</h2>
+                <p>
+                  To be the beacon for authentic self-expression. We create spaces where individuality 
+                  is celebrated, where the bold thrive, and where every piece tells a story of rebellion, 
+                  elegance, and purpose.
+                </p>
+                <button className="learn-more-btn">LEARN MORE</button>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

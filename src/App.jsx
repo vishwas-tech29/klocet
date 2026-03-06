@@ -7,6 +7,9 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
+import { PageLoader } from './components/PageLoader';
+import { ScrollToTop } from './components/ScrollToTop';
+import { CustomCursor } from './components/CustomCursor';
 
 // Pages
 import { Home } from './pages/Home';
@@ -37,6 +40,8 @@ function App() {
     <AdminProvider>
       <ProductProvider>
         <CartProvider>
+          <PageLoader />
+          <CustomCursor />
           <Router>
             <Routes>
               {/* Admin Routes */}
@@ -84,6 +89,7 @@ function App() {
                   <Home />
                   <Footer />
                   <CartDrawer isOpen={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
+                  <ScrollToTop />
                 </>
               } />
               <Route path="/men" element={
@@ -91,6 +97,7 @@ function App() {
                   <Navbar />
                   <Men />
                   <Footer />
+                  <ScrollToTop />
                 </>
               } />
               <Route path="/women" element={
@@ -98,6 +105,7 @@ function App() {
                   <Navbar />
                   <Women />
                   <Footer />
+                  <ScrollToTop />
                 </>
               } />
               <Route path="/catalog" element={
@@ -105,6 +113,7 @@ function App() {
                   <Navbar />
                   <Catalog />
                   <Footer />
+                  <ScrollToTop />
                 </>
               } />
               <Route path="/product/:id" element={

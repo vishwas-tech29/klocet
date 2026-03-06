@@ -1,0 +1,124 @@
+.page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 600ms ease, visibility 600ms ease;
+}
+
+.page-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.loader-logo {
+  margin-bottom: 40px;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+.loader-text {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 72px);
+  letter-spacing: 8px;
+  background: linear-gradient(135deg, var(--text) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  animation: shimmer 3s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.loader-tagline {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.loader-bar-container {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--accent) 100%);
+  transition: width 300ms ease;
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.8);
+  }
+}
+
+.loader-percentage {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* Spinner Animation (Alternative) */
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,319 @@
+.player-hud {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  animation: slideInRight 600ms ease;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hud-content {
+  background: rgba(5, 5, 8, 0.95);
+  border: 2px solid var(--neon-green);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  padding: 16px;
+  min-width: 280px;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 136, 0.3),
+    inset 0 0 20px rgba(0, 255, 136, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.hud-section {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.hud-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Player Info */
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-avatar {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 255, 136, 0.1);
+  border: 2px solid var(--neon-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+
+.avatar-icon {
+  font-size: 20px;
+  filter: drop-shadow(0 0 4px var(--glow-green));
+}
+
+.player-details {
+  flex: 1;
+}
+
+.player-name {
+  font-family: var(--font-game);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--glow-green);
+}
+
+.player-level {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.level-label {
+  font-family: var(--font-game);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--electric-purple);
+}
+
+.level-value {
+  font-family: var(--font-game);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--glow-green);
+}
+
+/* XP Bar */
+.xp-section {
+  padding-bottom: 8px;
+}
+
+.xp-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--neon-green);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-green), var(--electric-purple));
+  transition: width 600ms ease;
+  box-shadow: 0 0 10px var(--glow-green);
+  position: relative;
+}
+
+.xp-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: xpShimmer 2s linear infinite;
+}
+
+@keyframes xpShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.xp-text {
+  font-family: var(--font-game);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--soft-white);
+  text-align: right;
+}
+
+/* Inventory */
+.inventory-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.inventory-section:hover {
+  transform: translateX(-4px);
+}
+
+.inventory-section:hover .inventory-icon {
+  transform: scale(1.2);
+}
+
+.inventory-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 0 4px var(--glow-green));
+  transition: transform 300ms ease;
+}
+
+.inventory-details {
+  flex: 1;
+}
+
+.inventory-label {
+  font-family: var(--font-game);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--electric-purple);
+  text-transform: uppercase;
+}
+
+.inventory-count {
+  font-family: var(--font-game);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--glow-green);
+  margin-top: 2px;
+}
+
+/* Currency */
+.currency-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.currency-icon {
+  font-size: 20px;
+  filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5));
+}
+
+.currency-amount {
+  font-family: var(--font-game);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--legendary-gold);
+  text-shadow: 0 0 5px rgba(245, 158, 11, 0.5);
+}
+
+/* Level Up Notification */
+.level-up-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  animation: levelUpAppear 3s ease-out forwards;
+}
+
+@keyframes levelUpAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+.level-up-content {
+  background: rgba(5, 5, 8, 0.95);
+  border: 3px solid var(--legendary-gold);
+  padding: 40px 60px;
+  text-align: center;
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+  box-shadow: 
+    0 0 40px rgba(245, 158, 11, 0.6),
+    inset 0 0 40px rgba(245, 158, 11, 0.1);
+}
+
+.level-up-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  animation: levelUpPulse 1s ease-in-out infinite;
+}
+
+@keyframes levelUpPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+  }
+  50% {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.8));
+  }
+}
+
+.level-up-text {
+  font-family: var(--font-game);
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--legendary-gold);
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.8);
+  margin-bottom: 8px;
+}
+
+.level-up-level {
+  font-family: var(--font-game);
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--glow-green);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .player-hud {
+    top: 10px;
+    right: 10px;
+  }
+
+  .hud-content {
+    min-width: 240px;
+    padding: 12px;
+  }
+
+  .player-name {
+    font-size: 12px;
+  }
+
+  .level-value {
+    font-size: 14px;
+  }
+
+  .inventory-count,
+  .currency-amount {
+    font-size: 12px;
+  }
+}

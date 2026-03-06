@@ -4,6 +4,7 @@ import { useAdmin } from '../context/AdminContext';
 import { ProductCard } from '../components/ProductCard';
 import { CategoryGrid } from '../components/CategoryGrid';
 import { ModelSlider } from '../components/ModelSlider';
+import { ScrollReveal } from '../components/ScrollReveal';
 import './Men.css';
 
 const Men = () => {
@@ -142,17 +143,21 @@ const Men = () => {
         {sweatshirtProducts.length > 0 && (
           <section id="sweatshirts" className="collection-section">
             <div className="section-header">
-              <div className="section-title">
-                <h2>SWEATSHIRTS</h2>
-                <p>Premium sweatshirts for ultimate comfort and style</p>
-              </div>
+              <ScrollReveal animation="fade-up">
+                <div className="section-title">
+                  <h2>SWEATSHIRTS</h2>
+                  <p>Premium sweatshirts for ultimate comfort and style</p>
+                </div>
+              </ScrollReveal>
               <div className="section-meta">
                 <span className="product-count">{sweatshirtProducts.length} items</span>
               </div>
             </div>
             <div className="collection-grid">
-              {getSortedProducts(sweatshirtProducts).map(product => (
-                <ProductCard key={product.id} product={product} />
+              {getSortedProducts(sweatshirtProducts).map((product, index) => (
+                <ScrollReveal key={product.id} animation="scale-in" delay={index * 80}>
+                  <ProductCard product={product} />
+                </ScrollReveal>
               ))}
             </div>
           </section>
@@ -162,17 +167,21 @@ const Men = () => {
         {tshirtProducts.length > 0 && (
           <section id="tshirts" className="collection-section">
             <div className="section-header">
-              <div className="section-title">
-                <h2>T-SHIRTS</h2>
-                <p>Essential tees with bold graphics and premium quality</p>
-              </div>
+              <ScrollReveal animation="fade-up">
+                <div className="section-title">
+                  <h2>T-SHIRTS</h2>
+                  <p>Essential tees with bold graphics and premium quality</p>
+                </div>
+              </ScrollReveal>
               <div className="section-meta">
                 <span className="product-count">{tshirtProducts.length} items</span>
               </div>
             </div>
             <div className="collection-grid">
-              {getSortedProducts(tshirtProducts).map(product => (
-                <ProductCard key={product.id} product={product} />
+              {getSortedProducts(tshirtProducts).map((product, index) => (
+                <ScrollReveal key={product.id} animation="scale-in" delay={index * 80}>
+                  <ProductCard product={product} />
+                </ScrollReveal>
               ))}
             </div>
           </section>
