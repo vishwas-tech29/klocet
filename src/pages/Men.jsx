@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { useProducts } from '../context/ProductContext';
 import { useAdmin } from '../context/AdminContext';
 import { ProductCard } from '../components/ProductCard';
+import { CategoryGrid } from '../components/CategoryGrid';
+import { ModelSlider } from '../components/ModelSlider';
 import './Men.css';
 
 const Men = () => {
@@ -76,8 +78,41 @@ const Men = () => {
     return menProducts.filter(p => p.category === 'Tees');
   }, [menProducts]);
 
+  // Category configuration
+  const categories = [
+    {
+      id: 'sweatshirts',
+      name: 'Sweatshirts',
+      active: true,
+      image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=600&h=800&fit=crop'
+    },
+    {
+      id: 'tshirts',
+      name: 'T-Shirts',
+      active: true,
+      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=800&fit=crop'
+    },
+    {
+      id: 'hoodies',
+      name: 'Hoodies',
+      active: false,
+      image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=600&h=800&fit=crop',
+      countdown: 'Launching March 2026'
+    },
+    {
+      id: 'polo',
+      name: 'Polo Shirts',
+      active: false,
+      image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=600&h=800&fit=crop',
+      countdown: 'Launching April 2026'
+    }
+  ];
+
   return (
     <div className="men-page">
+      {/* Model Slider */}
+      <ModelSlider />
+
       {/* Hero Section */}
       <div className="men-hero">
         <h1>MEN'S COLLECTION</h1>
@@ -100,10 +135,12 @@ const Men = () => {
       </div>
 
       {/* Category Sections */}
+      <CategoryGrid categories={categories} />
+
       <div className="collections-sections">
         {/* Sweatshirts Section */}
         {sweatshirtProducts.length > 0 && (
-          <section className="collection-section">
+          <section id="sweatshirts" className="collection-section">
             <div className="section-header">
               <div className="section-title">
                 <h2>SWEATSHIRTS</h2>
@@ -123,7 +160,7 @@ const Men = () => {
 
         {/* T-Shirts Section */}
         {tshirtProducts.length > 0 && (
-          <section className="collection-section">
+          <section id="tshirts" className="collection-section">
             <div className="section-header">
               <div className="section-title">
                 <h2>T-SHIRTS</h2>

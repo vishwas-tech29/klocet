@@ -75,14 +75,13 @@ export const Checkout = () => {
     existingOrders.push(order);
     localStorage.setItem('nevermind_orders', JSON.stringify(existingOrders));
 
-    // Clear cart and show success
+    // Clear cart and redirect to success page
     clearCart();
-    setOrderPlaced(true);
+    navigate('/payment/success');
+  };
 
-    // Redirect to home after 3 seconds
-    setTimeout(() => {
-      navigate('/');
-    }, 3000);
+  const handlePaymentFailure = () => {
+    navigate('/payment/failure');
   };
 
   if (cartItems.length === 0 && !orderPlaced) {
@@ -198,6 +197,7 @@ export const Checkout = () => {
                 <PaymentForm
                   amount={cartTotal}
                   onSuccess={handlePaymentSuccess}
+                  onFailure={handlePaymentFailure}
                   onBack={() => setPaymentStep(false)}
                   customerInfo={formData}
                 />

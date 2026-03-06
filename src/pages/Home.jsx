@@ -4,6 +4,7 @@ import { useProducts } from '../context/ProductContext';
 import { useAdmin } from '../context/AdminContext';
 import { ProductCard } from '../components/ProductCard';
 import { Ticker } from '../components/Ticker';
+import { ModelSlider } from '../components/ModelSlider';
 import './Home.css';
 
 export const Home = () => {
@@ -36,6 +37,9 @@ export const Home = () => {
 
   return (
     <div className="home-page" style={{ marginTop: '96px' }}>
+      {/* Model Slider */}
+      <ModelSlider />
+
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">

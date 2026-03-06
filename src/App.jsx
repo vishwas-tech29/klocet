@@ -17,6 +17,8 @@ import { ProductDetail } from './pages/ProductDetail';
 import { Cart } from './pages/Cart';
 import { Checkout } from './pages/Checkout';
 import { About } from './pages/About';
+import { PaymentSuccess } from './pages/PaymentSuccess';
+import { PaymentFailure } from './pages/PaymentFailure';
 
 // Admin Pages
 import { AdminLogin } from './pages/admin/AdminLogin';
@@ -130,6 +132,20 @@ function App() {
                 <>
                   <Navbar />
                   <About />
+                  <Footer />
+                </>
+              } />
+              <Route path="/payment/success" element={
+                <>
+                  <Navbar />
+                  <PaymentSuccess />
+                  <Footer />
+                </>
+              } />
+              <Route path="/payment/failure" element={
+                <>
+                  <Navbar />
+                  <PaymentFailure />
                   <Footer />
                 </>
               } />

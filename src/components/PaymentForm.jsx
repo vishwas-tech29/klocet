@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './PaymentForm.css';
 
-export const PaymentForm = ({ amount, onSuccess, onBack, customerInfo }) => {
+export const PaymentForm = ({ amount, onSuccess, onFailure, onBack, customerInfo }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [processing, setProcessing] = useState(false);
@@ -40,6 +40,9 @@ export const PaymentForm = ({ amount, onSuccess, onBack, customerInfo }) => {
       if (stripeError) {
         setError(stripeError.message);
         setProcessing(false);
+        if (onFailure) {
+          setTimeout(() => onFailure(), 2000);
+        }
         return;
       }
 
@@ -57,6 +60,9 @@ export const PaymentForm = ({ amount, onSuccess, onBack, customerInfo }) => {
     } catch (err) {
       setError('Payment failed. Please try again.');
       setProcessing(false);
+      if (onFailure) {
+        setTimeout(() => onFailure(), 2000);
+      }
     }
   };
 
