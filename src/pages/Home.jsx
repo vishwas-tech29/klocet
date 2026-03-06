@@ -116,7 +116,7 @@ export const Home = () => {
               <div className="mission-text">
                 <h2>OUR MISSION</h2>
                 <p>
-                  We believe in fashion that speaks louder than words. NEVERMIND is more than a brand—
+                  We believe in fashion that speaks louder than words. KLOCET is more than a brand—
                   it's a movement for those who refuse to fit into molds. We design pieces that challenge, 
                   inspire, and empower the unconventional.
                 </p>

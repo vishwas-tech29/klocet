@@ -27,7 +27,7 @@ export const PageLoader = () => {
     <div className={`page-loader ${!loading ? 'fade-out' : ''}`}>
       <div className="loader-content">
         <div className="loader-logo">
-          <h1 className="loader-text">NEVERMIND</h1>
+          <h1 className="loader-text">KLOCET</h1>
           <div className="loader-tagline">DESIGNED TO DISRUPT</div>
         </div>
         

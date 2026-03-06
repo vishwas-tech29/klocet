@@ -31,7 +31,7 @@ export const AdminLogin = () => {
   return (
     <div className="admin-login-page">
       <div className="login-card">
-        <h1 className="login-logo">NEVERMIND</h1>
+        <h1 className="login-logo">KLOCET</h1>
         <h2>ADMIN ACCESS</h2>
 
         <form onSubmit={handleSubmit}>

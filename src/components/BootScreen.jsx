@@ -84,8 +84,8 @@ export const BootScreen = ({ onComplete }) => {
       <div className="boot-screen logo-stage">
         <div className="logo-container">
           <div className="logo-assembly">
-            <h1 className="brand-logo glitch" data-text="NEVERMIND">
-              NEVERMIND
+            <h1 className="brand-logo glitch" data-text="KLOCET">
+              KLOCET
             </h1>
             <div className="logo-subtitle">DESIGNED TO DISRUPT</div>
           </div>

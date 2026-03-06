@@ -7,7 +7,7 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h3 className="footer-title">NEVERMIND</h3>
+          <h3 className="footer-title">KLOCET</h3>
           <p className="footer-text">Dark streetwear for the discerning mind.</p>
         </div>
 
@@ -34,14 +34,14 @@ export const Footer = () => {
         <div className="footer-section">
           <h4 className="footer-heading">CONTACT</h4>
           <p className="footer-text">
-            hello@nevermind.com<br />
+            hello@klocet.com<br />
             +1 (555) 123-4567
           </p>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; NEVERMIND 2024. ALL RIGHTS RESERVED.</p>
+        <p>&copy; KLOCET 2024. ALL RIGHTS RESERVED.</p>
       </div>
     </footer>
   );

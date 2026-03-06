@@ -10,7 +10,7 @@ export const About = () => {
       {/* Hero Banner */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <h1>ABOUT NEVERMIND</h1>
+          <h1>ABOUT KLOCET</h1>
           <p>We're more than a brand—we're a movement for the bold, the brave, and the unconventional.</p>
         </div>
       </section>
@@ -21,7 +21,7 @@ export const About = () => {
           <div className="story-content">
             <h2>OUR STORY</h2>
             <p>
-              NEVERMIND was born from a simple yet powerful idea: that fashion should challenge, inspire, 
+              KLOCET was born from a simple yet powerful idea: that fashion should challenge, inspire, 
               and empower. In a world of endless trends and fleeting moments, we decided to create something 
               timeless. Something that speaks to those who refuse to fit into molds.
             </p>
@@ -108,7 +108,7 @@ export const About = () => {
       <section className="contact-cta">
         <div className="container">
           <h2>STAY CONNECTED</h2>
-          <p>Follow us for exclusive drops, behind-the-scenes content, and the latest from the NEVERMIND universe.</p>
+          <p>Follow us for exclusive drops, behind-the-scenes content, and the latest from the KLOCET universe.</p>
           <div className="social-links">
             <a href="#instagram" className="social-btn">INSTAGRAM</a>
             <a href="#email" className="social-btn">EMAIL</a>
